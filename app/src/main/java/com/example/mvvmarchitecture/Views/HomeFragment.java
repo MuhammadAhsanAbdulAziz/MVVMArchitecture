@@ -11,17 +11,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mvvmarchitecture.Adapters.CourseAdapter;
+import com.example.mvvmarchitecture.Adapters.CourseSectionAdapter;
 import com.example.mvvmarchitecture.Models.CourseModel;
+import com.example.mvvmarchitecture.Models.CourseSectionModel;
 import com.example.mvvmarchitecture.R;
 import com.example.mvvmarchitecture.databinding.FragmentHomeBinding;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
-    CourseAdapter adp;
-    ArrayList<CourseModel> data = new ArrayList<>();
-    LinearLayoutManager linearLayoutManager;
+    CourseSectionAdapter adp;
+    ArrayList<CourseSectionModel> data = new ArrayList<>();
 
     public HomeFragment() {
         // Required empty public constructor
@@ -39,17 +41,15 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         FragmentHomeBinding binding = FragmentHomeBinding.inflate(inflater,container,false);
 
-        data.clear();
-        data.add(new CourseModel("1","HTML","Behtreen course",""));
-        data.add(new CourseModel("2","HTML","Behtreen course",""));
-        data.add(new CourseModel("3","HTML","Behtreen course",""));
-        data.add(new CourseModel("4","HTML","Behtreen course",""));
-        data.add(new CourseModel("5","HTML","Behtreen course",""));
+        ArrayList<CourseModel>dev = new ArrayList<>();
+        dev.add(new CourseModel("0","HTML1","Markup Lanugage",""));
+        dev.add(new CourseModel("0","HTML2","Markup Lanugage",""));
+        dev.add(new CourseModel("0","HTML3","Markup Lanugage",""));
 
-        linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
-        binding.courselist.setLayoutManager(linearLayoutManager);
-        adp = new CourseAdapter(getContext(),data);
+        data.add(new CourseSectionModel("Development",dev));
+        data.add(new CourseSectionModel("Marketing",dev));
+
+        adp = new CourseSectionAdapter(getContext(),data);
         binding.courselist.setAdapter(adp);
         return binding.getRoot();
     }

@@ -59,10 +59,10 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
             Tdescription = itemView.findViewById(R.id.coursedescription);
         }
 
-        public void setData(String name, String major, String image) {
+        public void setData(String name, String des, String image) {
             Tname.setText(name);
-            Tdescription.setText(major);
-            Glide.with(context).load(image).error(R.drawable.ic_baseline_person_24).dontAnimate().into(imageView);
+            Tdescription.setText(des);
+            Glide.with(context).load(image).error(R.drawable.ic_launcher_background).dontAnimate().into(imageView);
 
         }
     }
