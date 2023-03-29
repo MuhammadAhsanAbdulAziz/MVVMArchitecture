@@ -1,10 +1,14 @@
 package com.example.mvvmarchitecture.Models;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.AsyncDifferConfig;
+import androidx.recyclerview.widget.DiffUtil;
+
 import java.util.ArrayList;
 
 public class CourseSectionModel {
     String Category;
-    ArrayList<CourseModel> CourseList = new ArrayList<>();
+    ArrayList<CourseModel> CourseList;
 
     public CourseSectionModel(String category, ArrayList<CourseModel> courseList) {
         Category = category;
@@ -42,4 +46,17 @@ public class CourseSectionModel {
                 ", CourseList=" + CourseList +
                 '}';
     }
+
+    public static DiffUtil.ItemCallback<CourseSectionModel> courseSectionModelItemCallback =
+            new DiffUtil.ItemCallback<CourseSectionModel>() {
+                @Override
+                public boolean areItemsTheSame(@NonNull CourseSectionModel oldItem, @NonNull CourseSectionModel newItem) {
+                    return oldItem.getCategory().equals(newItem.getCategory());
+                }
+
+                @Override
+                public boolean areContentsTheSame(@NonNull CourseSectionModel oldItem, @NonNull CourseSectionModel newItem) {
+                    return oldItem.equals(newItem);
+                }
+            };
 }

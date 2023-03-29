@@ -3,6 +3,8 @@ package com.example.mvvmarchitecture.Views;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,15 +17,18 @@ import com.example.mvvmarchitecture.Adapters.CourseSectionAdapter;
 import com.example.mvvmarchitecture.Models.CourseModel;
 import com.example.mvvmarchitecture.Models.CourseSectionModel;
 import com.example.mvvmarchitecture.R;
+import com.example.mvvmarchitecture.ViewModel.CourseViewModel;
 import com.example.mvvmarchitecture.databinding.FragmentHomeBinding;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
     CourseSectionAdapter adp;
-    ArrayList<CourseSectionModel> data = new ArrayList<>();
+    CourseViewModel viewModel;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -41,16 +46,23 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         FragmentHomeBinding binding = FragmentHomeBinding.inflate(inflater,container,false);
 
-        ArrayList<CourseModel>dev = new ArrayList<>();
-        dev.add(new CourseModel("0","HTML1","Markup Lanugage",""));
-        dev.add(new CourseModel("0","HTML2","Markup Lanugage",""));
-        dev.add(new CourseModel("0","HTML3","Markup Lanugage",""));
 
-        data.add(new CourseSectionModel("Development",dev));
-        data.add(new CourseSectionModel("Marketing",dev));
 
-        adp = new CourseSectionAdapter(getContext(),data);
+
+
+
+
+        viewModel = new ViewModelProvider(requireActivity()).get(CourseViewModel.class);
+
+        viewModel.getCourseSection().observe(requireActivity(), new Observer<List<CourseSectionModel>>() {
+            @Override
+            public void onChanged(List<CourseSectionModel> courseSectionModels) {
+                adp.submitList(courseSectionModels);
+            }
+        });
+        adp = new CourseSectionAdapter();
         binding.courselist.setAdapter(adp);
+
         return binding.getRoot();
     }
 

@@ -8,59 +8,53 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.mvvmarchitecture.Models.CourseModel;
 import com.example.mvvmarchitecture.Models.CourseSectionModel;
 import com.example.mvvmarchitecture.R;
+import com.example.mvvmarchitecture.databinding.CourseRowBinding;
 
 import java.util.ArrayList;
 
-public class CourseSectionAdapter extends RecyclerView.Adapter<CourseSectionAdapter.ViewHolder> {
-    Context context;
-    ArrayList<CourseSectionModel> data = new ArrayList<>();
+public class CourseSectionAdapter extends ListAdapter<CourseSectionModel,CourseSectionAdapter.ViewHolder> {
 
-    public CourseSectionAdapter(Context context, ArrayList<CourseSectionModel> data) {
-        this.context = context;
-        this.data = data;
+
+    public CourseSectionAdapter() {
+        super(CourseSectionModel.courseSectionModelItemCallback);
     }
 
     @NonNull
     @Override
     public CourseSectionAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.course_row, parent, false);
-        return new ViewHolder(v);
+        LayoutInflater layout = LayoutInflater.from(parent.getContext());
+        CourseRowBinding binding = CourseRowBinding.inflate(layout,parent,false);
+        return new ViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CourseSectionAdapter.ViewHolder holder, int position) {
-        String category = data.get(position).getCategory();
-        CourseAdapter c = new CourseAdapter(context,data.get(position).getCourseList());
+        CourseSectionModel data = getItem(position);
+        holder.binding.category.setText(data.getCategory());
+        CourseAdapter c = new CourseAdapter();
 
-        holder.setData(category,c);
-    }
+        holder.binding.courses.setAdapter(c);
 
-    @Override
-    public int getItemCount() {
-        return data.size();
+        c.submitList(data.getCourseList());
     }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView Category;
-        RecyclerView courses;
 
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
+        CourseRowBinding binding;
 
-            Category = itemView.findViewById(R.id.category);
-            courses = itemView.findViewById(R.id.courses);
-        }
+        public ViewHolder(CourseRowBinding binding) {
+            super(binding.getRoot());
 
-        public void setData(String category,CourseAdapter c) {
-            Category.setText(category);
-            courses.setAdapter(c);
+            this.binding = binding;
 
         }
     }

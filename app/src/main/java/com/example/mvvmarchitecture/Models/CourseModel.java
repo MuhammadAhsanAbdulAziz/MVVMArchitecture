@@ -1,9 +1,12 @@
 package com.example.mvvmarchitecture.Models;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+
 import java.util.Objects;
 
 public class CourseModel {
-    private String id,name,description,picture;
+    private String id, name, description, picture;
 
     public CourseModel(String id, String name, String description, String picture) {
         this.id = id;
@@ -61,4 +64,17 @@ public class CourseModel {
         CourseModel that = (CourseModel) o;
         return getId().equals(that.getId()) && getName().equals(that.getName()) && getDescription().equals(that.getDescription()) && Objects.equals(getPicture(), that.getPicture());
     }
+
+    public static DiffUtil.ItemCallback<CourseModel> courseModelItemCallback =
+            new DiffUtil.ItemCallback<CourseModel>() {
+                @Override
+                public boolean areItemsTheSame(@NonNull CourseModel oldItem, @NonNull CourseModel newItem) {
+                    return oldItem.getId().equals(newItem.getId());
+                }
+
+                @Override
+                public boolean areContentsTheSame(@NonNull CourseModel oldItem, @NonNull CourseModel newItem) {
+                    return oldItem.equals(newItem);
+                }
+            };
 }

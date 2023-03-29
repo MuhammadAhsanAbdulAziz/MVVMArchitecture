@@ -8,62 +8,54 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.mvvmarchitecture.Models.CourseModel;
 import com.example.mvvmarchitecture.R;
+import com.example.mvvmarchitecture.databinding.CourseBoxBinding;
 
 import java.util.ArrayList;
 
-public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder> {
-    Context context;
-    ArrayList<CourseModel> data = new ArrayList<>();
+public class CourseAdapter extends ListAdapter<CourseModel, CourseAdapter.ViewHolder> {
 
-    public CourseAdapter(Context context, ArrayList<CourseModel> data) {
-        this.context = context;
-        this.data = data;
+
+    public CourseAdapter() {
+        super(CourseModel.courseModelItemCallback);
     }
 
     @NonNull
     @Override
     public CourseAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.course_box, parent, false);
-        return new ViewHolder(v);
+        LayoutInflater layout = LayoutInflater.from(parent.getContext());
+        CourseBoxBinding binding = CourseBoxBinding.inflate(layout, parent, false);
+        return new ViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CourseAdapter.ViewHolder holder, int position) {
-        String Name = data.get(position).getName();
-        String Description = data.get(position).getDescription();
-        String Picture = data.get(position).getPicture();
+        CourseModel data = getItem(position);
+        holder.binding.coursename.setText(data.getName());
+        holder.binding.coursedescription.setText(data.getDescription());
+//        Glide.with(context).load(data.getPicture()).error(R.drawable.ic_launcher_background)
+//                .dontAnimate().into(holder.binding.courseimg);
 
-        holder.setData(Name, Description, Picture);
-    }
-
-    @Override
-    public int getItemCount() {
-        return data.size();
     }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageView;
-        TextView Tname, Tdescription;
 
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
 
-            Tname = itemView.findViewById(R.id.coursename);
-            imageView = itemView.findViewById(R.id.courseimg);
-            Tdescription = itemView.findViewById(R.id.coursedescription);
-        }
+        CourseBoxBinding binding;
 
-        public void setData(String name, String des, String image) {
-            Tname.setText(name);
-            Tdescription.setText(des);
-            Glide.with(context).load(image).error(R.drawable.ic_launcher_background).dontAnimate().into(imageView);
+        public ViewHolder(CourseBoxBinding binding) {
+            super(binding.getRoot());
+
+            this.binding = binding;
 
         }
+
     }
 }
