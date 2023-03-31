@@ -3,8 +3,8 @@ package com.example.mvvmarchitecture.ViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.mvvmarchitecture.Models.CourseModel;
-import com.example.mvvmarchitecture.Models.CourseSectionModel;
+import com.example.mvvmarchitecture.models.CourseModel;
+import com.example.mvvmarchitecture.models.CourseSectionModel;
 import com.example.mvvmarchitecture.Repository.CourseSectionRepository;
 
 import java.util.List;

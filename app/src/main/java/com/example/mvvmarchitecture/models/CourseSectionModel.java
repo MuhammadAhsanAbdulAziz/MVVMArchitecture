@@ -1,7 +1,6 @@
-package com.example.mvvmarchitecture.Models;
+package com.example.mvvmarchitecture.models;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.AsyncDifferConfig;
 import androidx.recyclerview.widget.DiffUtil;
 
 import java.util.ArrayList;

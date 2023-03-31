@@ -23,14 +23,15 @@
             android:id="@+id/deals"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Deals"
+            android:text="Categories"
             android:textSize="30sp"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/CatList"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/deal_card"
+            tools:listitem="@layout/category_box"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>

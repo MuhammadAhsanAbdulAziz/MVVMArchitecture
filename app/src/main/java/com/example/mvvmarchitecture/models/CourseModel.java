@@ -1,4 +1,4 @@
-package com.example.mvvmarchitecture.Models;
+package com.example.mvvmarchitecture.models;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;

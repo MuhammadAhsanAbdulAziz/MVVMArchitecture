@@ -3,8 +3,8 @@ package com.example.mvvmarchitecture.Repository;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.mvvmarchitecture.Models.CourseModel;
-import com.example.mvvmarchitecture.Models.CourseSectionModel;
+import com.example.mvvmarchitecture.models.CourseModel;
+import com.example.mvvmarchitecture.models.CourseSectionModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,13 +15,6 @@ public class CourseSectionRepository {
     MutableLiveData<List<CourseModel>> CourseLiveData;
     ArrayList<CourseModel> dev;
 
-
-    public LiveData<List<CourseModel>> getCourse() {
-        CourseLiveData = new MutableLiveData<>();
-
-        CourseLiveData.setValue(dev);
-        return CourseLiveData;
-    }
 
     public LiveData<List<CourseSectionModel>> getCourseSection() {
         CourseSectionLiveData = new MutableLiveData<>();
@@ -39,6 +32,15 @@ public class CourseSectionRepository {
         return CourseSectionLiveData;
 
     }
+
+    public LiveData<List<CourseModel>> getCourse() {
+        CourseLiveData = new MutableLiveData<>();
+
+        CourseLiveData.setValue(dev);
+        return CourseLiveData;
+    }
+
+
 
 
 }

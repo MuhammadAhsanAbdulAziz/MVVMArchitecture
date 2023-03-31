@@ -1,24 +1,14 @@
 package com.example.mvvmarchitecture.Adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.example.mvvmarchitecture.Models.CourseModel;
-import com.example.mvvmarchitecture.Models.CourseSectionModel;
-import com.example.mvvmarchitecture.R;
 import com.example.mvvmarchitecture.databinding.CourseRowBinding;
-
-import java.util.ArrayList;
+import com.example.mvvmarchitecture.models.CourseSectionModel;
 
 public class CourseSectionAdapter extends ListAdapter<CourseSectionModel,CourseSectionAdapter.ViewHolder> {
 
