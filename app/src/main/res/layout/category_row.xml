@@ -5,9 +5,13 @@
         <variable
             name="category"
             type="com.example.mvvmarchitecture.models.CategoryModel" />
+        <variable
+            name="Courses"
+            type="com.example.mvvmarchitecture.interfaces.CourseInterface" />
     </data>
 
     <LinearLayout
+        android:onClick="@{()->Courses.moreCourses(category.name)}"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true"

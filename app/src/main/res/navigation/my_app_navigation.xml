@@ -29,7 +29,11 @@
         android:id="@+id/moreCategoryFragment"
         android:name="com.example.mvvmarchitecture.Views.MoreCategoryFragment"
         android:label="fragment_more_category"
-        tools:layout="@layout/fragment_more_category" />
+        tools:layout="@layout/fragment_more_category" >
+        <action
+            android:id="@+id/action_moreCategoryFragment_to_moreCoursesFragment"
+            app:destination="@id/moreCoursesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/courseDetailsFragment"
         android:name="com.example.mvvmarchitecture.Views.CourseDetailsFragment"
@@ -39,5 +43,9 @@
         android:id="@+id/moreCoursesFragment"
         android:name="com.example.mvvmarchitecture.Views.MoreCoursesFragment"
         android:label="fragment_more_courses"
-        tools:layout="@layout/fragment_more_courses" />
+        tools:layout="@layout/fragment_more_courses" >
+        <action
+            android:id="@+id/action_moreCoursesFragment_to_courseDetailsFragment"
+            app:destination="@id/courseDetailsFragment" />
+    </fragment>
 </navigation>

@@ -9,13 +9,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mvvmarchitecture.databinding.CategoryBoxBinding;
 import com.example.mvvmarchitecture.databinding.CategoryRowBinding;
+import com.example.mvvmarchitecture.interfaces.CourseInterface;
 import com.example.mvvmarchitecture.models.CategoryModel;
 
 public class CategoryAdapterHome extends ListAdapter<CategoryModel, CategoryAdapterHome.ViewHolder> {
 
+    CourseInterface courseInterface;
 
-    public CategoryAdapterHome() {
+    public CategoryAdapterHome(CourseInterface courseInterface) {
         super(CategoryModel.categoryModelItemCallback);
+
+        this.courseInterface = courseInterface;
     }
 
     @NonNull
@@ -29,6 +33,7 @@ public class CategoryAdapterHome extends ListAdapter<CategoryModel, CategoryAdap
     @Override
     public void onBindViewHolder(@NonNull CategoryAdapterHome.ViewHolder holder, int position) {
         CategoryModel data = getItem(position);
+        holder.binding.setCourses(courseInterface);
         holder.binding.setCategory(data);
 
     }

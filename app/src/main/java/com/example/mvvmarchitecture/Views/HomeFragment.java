@@ -52,7 +52,7 @@ public class HomeFragment extends Fragment implements CourseInterface{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        categoryAdapterHome = new CategoryAdapterHome();
+        categoryAdapterHome = new CategoryAdapterHome(this);
 
         FragmentHomeBinding binding = FragmentHomeBinding.inflate(inflater, container, false);
 
@@ -113,7 +113,6 @@ public class HomeFragment extends Fragment implements CourseInterface{
     public void CourseDetail(CourseModel Course) {
         courseviewModel.setCourseModel(Course);
         navController.navigate(R.id.action_homeFragment_to_courseDetailsFragment);
-
     }
 
 }
