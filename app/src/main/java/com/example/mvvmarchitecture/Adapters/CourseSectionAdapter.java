@@ -36,7 +36,7 @@ public class CourseSectionAdapter extends ListAdapter<CourseSectionModel,CourseS
 
         holder.binding.setCourseInterface(courseInterface);
 
-        CourseAdapter c = new CourseAdapter();
+        CourseAdapter c = new CourseAdapter(courseInterface);
 
         holder.binding.courses.setAdapter(c);
 

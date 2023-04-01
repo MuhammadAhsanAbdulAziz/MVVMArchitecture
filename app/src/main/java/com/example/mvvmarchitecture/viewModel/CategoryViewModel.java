@@ -1,4 +1,4 @@
-package com.example.mvvmarchitecture.ViewModel;
+package com.example.mvvmarchitecture.viewModel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;

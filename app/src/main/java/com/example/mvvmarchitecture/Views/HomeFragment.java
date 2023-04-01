@@ -17,13 +17,13 @@ import android.view.ViewGroup;
 import com.example.mvvmarchitecture.Adapters.CategoryAdapterHome;
 import com.example.mvvmarchitecture.Adapters.CourseSectionAdapter;
 import com.example.mvvmarchitecture.R;
-import com.example.mvvmarchitecture.ViewModel.CategoryViewModel;
+import com.example.mvvmarchitecture.viewModel.CategoryViewModel;
 import com.example.mvvmarchitecture.databinding.FragmentHomeBinding;
 import com.example.mvvmarchitecture.interfaces.CourseInterface;
 import com.example.mvvmarchitecture.models.CategoryModel;
 import com.example.mvvmarchitecture.models.CourseModel;
 import com.example.mvvmarchitecture.models.CourseSectionModel;
-import com.example.mvvmarchitecture.ViewModel.CourseViewModel;
+import com.example.mvvmarchitecture.viewModel.CourseViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -111,6 +111,8 @@ public class HomeFragment extends Fragment implements CourseInterface{
 
     @Override
     public void CourseDetail(CourseModel Course) {
+        courseviewModel.setCourseModel(Course);
+        navController.navigate(R.id.action_homeFragment_to_courseDetailsFragment);
 
     }
 

@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import com.example.mvvmarchitecture.Adapters.CategoryAdapter;
 import com.example.mvvmarchitecture.databinding.FragmentMoreCategoryBinding;
 import com.example.mvvmarchitecture.models.CategoryModel;
-import com.example.mvvmarchitecture.ViewModel.CategoryViewModel;
+import com.example.mvvmarchitecture.viewModel.CategoryViewModel;
 
 import java.util.List;
 

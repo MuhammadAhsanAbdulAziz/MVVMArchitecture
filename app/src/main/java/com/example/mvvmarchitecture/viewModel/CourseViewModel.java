@@ -1,4 +1,4 @@
-package com.example.mvvmarchitecture.ViewModel;
+package com.example.mvvmarchitecture.viewModel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
@@ -14,6 +14,7 @@ public class CourseViewModel extends ViewModel {
     CourseSectionRepository repo = new CourseSectionRepository();
 
     String Category;
+    CourseModel courseModel;
 
     public CourseSectionRepository getRepo() {
         return repo;
@@ -21,6 +22,14 @@ public class CourseViewModel extends ViewModel {
 
     public void setRepo(CourseSectionRepository repo) {
         this.repo = repo;
+    }
+
+    public CourseModel getCourseModel() {
+        return courseModel;
+    }
+
+    public void setCourseModel(CourseModel courseModel) {
+        this.courseModel = courseModel;
     }
 
     public String getCategory() {
