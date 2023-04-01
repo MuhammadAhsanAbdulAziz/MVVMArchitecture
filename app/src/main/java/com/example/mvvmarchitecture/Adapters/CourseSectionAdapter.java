@@ -8,13 +8,17 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mvvmarchitecture.databinding.CourseRowBinding;
+import com.example.mvvmarchitecture.interfaces.CourseInterface;
 import com.example.mvvmarchitecture.models.CourseSectionModel;
 
 public class CourseSectionAdapter extends ListAdapter<CourseSectionModel,CourseSectionAdapter.ViewHolder> {
 
+    CourseInterface courseInterface;
 
-    public CourseSectionAdapter() {
+    public CourseSectionAdapter(CourseInterface courseInterface) {
         super(CourseSectionModel.courseSectionModelItemCallback);
+
+        this.courseInterface = courseInterface;
     }
 
     @NonNull
@@ -28,7 +32,10 @@ public class CourseSectionAdapter extends ListAdapter<CourseSectionModel,CourseS
     @Override
     public void onBindViewHolder(@NonNull CourseSectionAdapter.ViewHolder holder, int position) {
         CourseSectionModel data = getItem(position);
-        holder.binding.category.setText(data.getCategory());
+        holder.binding.setCategory(data.getCategory());
+
+        holder.binding.setCourseInterface(courseInterface);
+
         CourseAdapter c = new CourseAdapter();
 
         holder.binding.courses.setAdapter(c);

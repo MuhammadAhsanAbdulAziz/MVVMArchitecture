@@ -13,6 +13,24 @@ public class CourseViewModel extends ViewModel {
 
     CourseSectionRepository repo = new CourseSectionRepository();
 
+    String Category;
+
+    public CourseSectionRepository getRepo() {
+        return repo;
+    }
+
+    public void setRepo(CourseSectionRepository repo) {
+        this.repo = repo;
+    }
+
+    public String getCategory() {
+        return Category;
+    }
+
+    public void setCategory(String category) {
+        Category = category;
+    }
+
     public LiveData<List<CourseModel>> getCourse()
     {
         return repo.getCourse();

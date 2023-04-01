@@ -11,21 +11,33 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_homeFragment_to_moreCategoryFragment"
+            app:destination="@id/moreCategoryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_courseDetailsFragment"
+            app:destination="@id/courseDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_moreCoursesFragment"
+            app:destination="@id/moreCoursesFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.mvvmarchitecture.Views.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
-        <action
-            android:id="@+id/action_profileFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/moreCategoryFragment"
         android:name="com.example.mvvmarchitecture.Views.MoreCategoryFragment"
         android:label="fragment_more_category"
         tools:layout="@layout/fragment_more_category" />
+    <fragment
+        android:id="@+id/courseDetailsFragment"
+        android:name="com.example.mvvmarchitecture.Views.CourseDetailsFragment"
+        android:label="fragment_course_details"
+        tools:layout="@layout/fragment_course_details" />
+    <fragment
+        android:id="@+id/moreCoursesFragment"
+        android:name="com.example.mvvmarchitecture.Views.MoreCoursesFragment"
+        android:label="fragment_more_courses"
+        tools:layout="@layout/fragment_more_courses" />
 </navigation>
